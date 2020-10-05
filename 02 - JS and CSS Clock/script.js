@@ -2,6 +2,7 @@ const secondHand = document.querySelector('.second-hand');
 const minuteHand = document.querySelector('.min-hand');
 const hourHand = document.querySelector('.hour-hand');
 const hands = document.getElementsByClassName('hand');
+const digital = document.querySelector('.clock-digital');
 
 
 function setDate() {
@@ -24,6 +25,18 @@ function setDate() {
     minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
     hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
 
+
+    let h = checkTime(hours);
+    let m = checkTime(minutes);
+    let s = checkTime(seconds);
+    digital.innerHTML = h + ":" + m + ":" + s;
+}
+
+function checkTime(i) {
+    if (i < 10) {
+        i = '0' + i;
+    }
+    return i;
 }
 
 setInterval(setDate, 1000);
